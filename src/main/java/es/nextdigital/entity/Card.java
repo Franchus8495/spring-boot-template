@@ -42,7 +42,9 @@ public abstract class Card {
         this.id = id;
         this.cardNumber = cardNumber;
         this.account = account;
-        this.pin = this.deobfuscatePin(pin);
+        if (pin != null) {
+            this.pin = this.deobfuscatePin(pin);
+        }
         this.limit = limit;
         this.isActive = isActive;
     }
