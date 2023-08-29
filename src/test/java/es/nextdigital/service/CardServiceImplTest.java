@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -35,8 +36,17 @@ public class CardServiceImplTest {
     }
 
     @Test
-    void activateCard_test() {
+    void activateCard_test_ok() {
+        Card card = new DebitCard(1, 23456, new Account(), null, 3000, false);
+        when(this.cardRepository.findCard(isA(Integer.class))).thenReturn(card);
+    }
 
+    @Test
+    void activateCard_test_fail() {
+        Card card = new DebitCard(1, 23456, new Account(), "1234", 3000, true);
+        when(this.cardRepository.findCard(isA(Integer.class))).thenReturn(card);
+
+        assertThrows(RuntimeException.class, () -> this.cardService.activateCard(1, "1234"))
     }
 
     @Test

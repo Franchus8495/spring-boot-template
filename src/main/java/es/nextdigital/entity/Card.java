@@ -60,7 +60,13 @@ public abstract class Card {
     }
 
     public void activate(String pin) {
-
+        if (Boolean.FALSE.equals(this.isActive)) {
+            this.isActive = Boolean.TRUE;
+            this.pin = this.obfuscatePin(pin);
+        } else {
+            //TODO create dedicated exception
+            throw new RuntimeException("Already activated cards cannot be activated");
+        }
     }
 
     private String obfuscatePin(String pin) {
