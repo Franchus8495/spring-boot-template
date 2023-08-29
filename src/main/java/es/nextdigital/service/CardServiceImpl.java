@@ -1,9 +1,11 @@
 package es.nextdigital.service;
 
 import es.nextdigital.entity.Movement;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CardServiceImpl implements CardService {
 
     @Override

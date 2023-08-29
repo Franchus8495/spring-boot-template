@@ -1,9 +1,11 @@
 package es.nextdigital.service;
 
 import es.nextdigital.entity.MovementType;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
+@Service
 public class CashierServiceImpl implements CashierService {
 
     @Override
