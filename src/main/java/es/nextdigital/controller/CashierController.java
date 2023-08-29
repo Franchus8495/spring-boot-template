@@ -2,6 +2,7 @@ package es.nextdigital.controller;
 
 import es.nextdigital.dto.MovementDTO;
 import es.nextdigital.entity.Movement;
+import es.nextdigital.entity.MovementType;
 import es.nextdigital.mapper.RestMovementMapper;
 import es.nextdigital.service.CardService;
 import es.nextdigital.service.CashierService;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController("/cashier")
@@ -46,19 +48,19 @@ public class CashierController {
 
     @PostMapping("/withdraw")
     public ResponseEntity<Void> withdrawMoney(@RequestAttribute Integer cashierId, @RequestAttribute Integer cardId, @RequestAttribute Integer amount) {
-
+        this.cashierService.withdraw(cashierId, cardId, BigDecimal.valueOf(amount));
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @PostMapping("/income")
     public ResponseEntity<Void> incomeMoney(@RequestAttribute Integer cashierId, @RequestAttribute Integer cardId, @RequestAttribute Integer amount) {
-
+        this.cashierService.income(cashierId, cardId, BigDecimal.valueOf(amount));
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @PostMapping("/transfer")
-    public ResponseEntity<Void> transferMoney(@RequestAttribute Integer cashierId, @RequestAttribute Integer cardId, @RequestAttribute Integer amount, @RequestAttribute Integer destinationAccountNumber, @RequestAttribute Integer transferType) {
-
+    public ResponseEntity<Void> transferMoney(@RequestAttribute Integer cashierId, @RequestAttribute Integer cardId, @RequestAttribute Integer amount, @RequestAttribute Integer destinationAccountNumber, @RequestAttribute String transferType) {
+        this.cashierService.transfer(cashierId, cardId, BigDecimal.valueOf(amount), destinationAccountNumber, MovementType.valueOf(transferType));
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 

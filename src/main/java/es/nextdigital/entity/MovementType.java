@@ -2,18 +2,15 @@ package es.nextdigital.entity;
 
 public enum MovementType {
 
-    INCOME(1, "INCOME"),
-    WITHDRAW(2, "WITHDRAW"),
-    COMMISSION(3, "COMMISSION"),
-    TRANSFER_IN(4, "TRANSFER_IN"),
-    TRANSFER_OUT(5, "TRANSFER_OUT");
+    INCOME("INCOME"),
+    WITHDRAW("WITHDRAW"),
+    COMMISSION("COMMISSION"),
+    TRANSFER_IN("TRANSFER_IN"),
+    TRANSFER_OUT("TRANSFER_OUT");
 
-    private Integer id;
+    private final String description;
 
-    private String description;
-
-    private MovementType(Integer id, String description) {
-        this.id = id;
+    private MovementType(String description) {
         this.description = description;
     }
 
