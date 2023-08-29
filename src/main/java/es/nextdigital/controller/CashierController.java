@@ -3,7 +3,7 @@ package es.nextdigital.controller;
 import es.nextdigital.dto.MovementDTO;
 import es.nextdigital.entity.Movement;
 import es.nextdigital.entity.MovementType;
-import es.nextdigital.mapper.RestMovementMapper;
+import es.nextdigital.mapper.rest.RestMovementMapper;
 import es.nextdigital.service.CardService;
 import es.nextdigital.service.CashierService;
 import org.springframework.beans.factory.annotation.Autowired;

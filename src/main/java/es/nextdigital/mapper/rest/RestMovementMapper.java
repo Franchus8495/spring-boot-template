@@ -1,4 +1,4 @@
-package es.nextdigital.mapper;
+package es.nextdigital.mapper.rest;
 
 import es.nextdigital.dto.MovementDTO;
 import es.nextdigital.entity.Movement;
