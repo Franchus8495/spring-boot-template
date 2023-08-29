@@ -29,13 +29,13 @@ public class CashierController {
     private RestMovementMapper restMovementMapper;
 
     @PostMapping("/activate")
-    public ResponseEntity<Void> activateCard(@RequestAttribute Integer cardId) {
-        this.cardService.activateCard(cardId);
+    public ResponseEntity<Void> activateCard(@RequestAttribute Integer cardId, @RequestAttribute String pin) {
+        this.cardService.activateCard(cardId, pin);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @PostMapping("/change-pin")
-    public ResponseEntity<Void> changePin(@RequestAttribute Integer cashierId, @RequestAttribute Integer cardId, @RequestAttribute Integer newPin) {
+    public ResponseEntity<Void> changePin(@RequestAttribute Integer cashierId, @RequestAttribute Integer cardId, @RequestAttribute String newPin) {
         this.cardService.changePin(cardId, newPin);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

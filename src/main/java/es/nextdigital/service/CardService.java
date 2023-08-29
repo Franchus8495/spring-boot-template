@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface CardService {
 
-    void changePin(Integer cardId, Integer newPin);
+    String changePin(Integer cardId, String newPin);
 
-    void activateCard(Integer cardId);
+    void activateCard(Integer cardId, String pin);
 
     List<Movement> getMovements(Integer cardId);
 

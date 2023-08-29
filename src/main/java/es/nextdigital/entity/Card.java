@@ -3,7 +3,10 @@ package es.nextdigital.entity;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
+import org.springframework.util.StringUtils;
 
+import java.util.Arrays;
+import java.util.Base64;
 import java.util.List;
 
 @Entity
@@ -23,8 +26,8 @@ public abstract class Card {
     @OneToOne(fetch = FetchType.EAGER, mappedBy = "account")
     private Account account;
 
-    @Column(name = "PIN", nullable = false)
-    private Integer pin;
+    @Column(name = "PIN")
+    private String pin;
 
     @Column(name = "LIMIT", nullable = false)
     private Integer limit;
@@ -35,8 +38,37 @@ public abstract class Card {
     @OneToMany(fetch = FetchType.LAZY, targetEntity = Movement.class)
     private List<Movement> movements;
 
-    public void changePin(Integer newPin) {
+    public Card(Integer id, Integer cardNumber, Account account, String pin, Integer limit, Boolean isActive) {
+        this.id = id;
+        this.cardNumber = cardNumber;
+        this.account = account;
+        this.pin = this.deobfuscatePin(pin);
+        this.limit = limit;
+        this.isActive = isActive;
+    }
 
+    public Card() {
+
+    }
+
+    public String getPin() {
+        return this.obfuscatePin(this.pin);
+    }
+
+    public void changePin(String newPin) {
+        this.pin = newPin;
+    }
+
+    public void activate(String pin) {
+
+    }
+
+    private String obfuscatePin(String pin) {
+        return Base64.getEncoder().encodeToString(pin.getBytes());
+    }
+
+    private String deobfuscatePin(String pin) {
+        return Arrays.toString(Base64.getDecoder().decode(pin));
     }
 
 }
