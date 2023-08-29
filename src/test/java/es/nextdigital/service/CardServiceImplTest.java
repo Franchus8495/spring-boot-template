@@ -46,7 +46,7 @@ public class CardServiceImplTest {
         Card card = new DebitCard(1, 23456, new Account(), "1234", 3000, true);
         when(this.cardRepository.findCard(isA(Integer.class))).thenReturn(card);
 
-        assertThrows(RuntimeException.class, () -> this.cardService.activateCard(1, "1234"))
+        assertThrows(RuntimeException.class, () -> this.cardService.activateCard(1, "1234"));
     }
 
     @Test
