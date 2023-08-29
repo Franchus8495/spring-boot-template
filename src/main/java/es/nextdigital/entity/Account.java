@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 public class Account {
 
+    private Integer id;
+
     private Bank bank;
 
     private String accountNumber;

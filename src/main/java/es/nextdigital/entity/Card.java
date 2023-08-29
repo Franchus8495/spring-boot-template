@@ -4,6 +4,8 @@ import java.util.List;
 
 public abstract class Card {
 
+    private Integer id;
+
     private Integer cardNumber;
 
     private Account account;
