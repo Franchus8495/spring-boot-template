@@ -12,6 +12,12 @@ public abstract class Card {
 
     private Integer limit;
 
+    private Boolean isActive;
+
     private List<Movement> movements;
+
+    public void changePin(Integer newPin) {
+
+    }
 
 }
