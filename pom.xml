@@ -43,6 +43,11 @@
 			<artifactId>mapstruct</artifactId>
 			<version>1.5.5.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId> <!-- Cambia esto según la base de datos que uses -->
+			<artifactId>h2</artifactId> <!-- Cambia esto según la base de datos que uses -->
+			<scope>runtime</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
